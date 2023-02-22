@@ -17,8 +17,6 @@ app.get("/users", (req, res) => {
   const { q } = req.query;
   let = usersData = users;
 
-  console.log(q);
-
   if (q) {
       usersData = users.filter(
         (u) =>
@@ -32,5 +30,7 @@ app.get("/users", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log("Server started on port: " + port);
+  if (process.env.NODE_ENV !== "production") {
+    console.log("Server started on port: " + port);
+  }
 });
